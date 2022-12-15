@@ -13,40 +13,42 @@ class MatrixTest {
      * @param a the matrix to be turned
      */
     void basicTurnCases(Matrix a) {
+        Matrix tmp;
+
         System.out.println("Print A matrix");
         a.print();
 
-        Matrix ninetyDegrees = a.rotate(90);
+        Matrix ninetyDegrees = a.deepCopy();
+        ninetyDegrees.rotate(90);
         System.out.println("\nPrint A matrix - turned 90 degrees");
         ninetyDegrees.print();
 
-        Matrix oneHundredEightyDegrees = a.rotate(180);
+        Matrix oneHundredEightyDegrees = a.deepCopy();
+        oneHundredEightyDegrees.rotate(180);
         System.out.println("\nPrint A matrix - turned 180 degrees");
         oneHundredEightyDegrees.print();
 
-        Matrix twoHundredSeventyDegrees = a.rotate(270);
+        Matrix twoHundredSeventyDegrees = a.deepCopy();
+        twoHundredSeventyDegrees.rotate(270);
         System.out.println("\nPrint A matrix - turned 270 degrees");
         twoHundredSeventyDegrees.print();
-        assertAll(
-                () -> assertTrue(Matrix.isSame(
-                        a.rotate(90), ninetyDegrees
-                )),
-                () -> assertTrue(Matrix.isSame(
-                        ninetyDegrees.rotate(180), twoHundredSeventyDegrees
-                )),
-                () -> assertTrue(Matrix.isSame(
-                        oneHundredEightyDegrees.rotate(90), twoHundredSeventyDegrees
-                )),
-                () -> assertTrue(Matrix.isSame(
-                        twoHundredSeventyDegrees.rotate(90), a
-                )),
-                () -> assertTrue(Matrix.isSame(
-                        oneHundredEightyDegrees.rotate(180), a
-                )),
-                () -> assertTrue(Matrix.isSame(
-                        twoHundredSeventyDegrees.rotate(180), ninetyDegrees
-                ))
-        );
+
+        // 90 + 180 -> 270
+        tmp = ninetyDegrees.deepCopy();
+        tmp.rotate(180);
+        assertTrue(Matrix.hasSameContent(tmp, twoHundredSeventyDegrees));
+
+        // 180 + 90 -> 270
+        tmp = oneHundredEightyDegrees.deepCopy();
+        tmp.rotate(90);
+        assertTrue(Matrix.hasSameContent(tmp, twoHundredSeventyDegrees));
+
+        Matrix threeHunderedSixty = a.deepCopy();
+        ninetyDegrees.rotate(270);
+        ninetyDegrees.rotate(90);
+        System.out.println("\nPrint A matrix - turned 360 degrees");
+        threeHunderedSixty.print();
+        assertTrue(Matrix.hasSameContent(a,threeHunderedSixty));
     }
 
     @Test
@@ -55,10 +57,10 @@ class MatrixTest {
         Matrix a = new Matrix(4);
         a.fillRandomValues(-1_000, 1_000);
 
-        Matrix b = a.rotate(90);
+        Matrix b = a.deepCopy();
         assertNotSame(a.data, b.data);
 
-        a = b.rotate(90);
+        a = b.deepCopy();
         assertNotSame(a.data, b.data);
 
     }
@@ -75,7 +77,7 @@ class MatrixTest {
         b.data = a.data;
 
         // Assertion
-        assertTrue(Matrix.isSame(a,b));
+        assertTrue(Matrix.hasSameContent(a,b));
 
         // Testing cases - odd
         Matrix c = new Matrix(5);
@@ -86,7 +88,7 @@ class MatrixTest {
         d.data = c.data;
 
         // Assertion
-        assertTrue(Matrix.isSame(a,b));
+        assertTrue(Matrix.hasSameContent(a,b));
     }
     @Test
     @DisplayName("Matrix turn method - edge cases")
@@ -126,5 +128,25 @@ class MatrixTest {
         Matrix b = new Matrix(4);
         b.fillRandomValues(-1_000, 1_000);
         basicTurnCases(b);
+    }
+    @Test
+    @DisplayName("Matrix turn method - manual rotation")
+    void manualRotation() {
+        // Testing cases
+        Matrix a = new Matrix(2);
+        a.data = new int[][]{
+            {1, 2},
+            {3, 4}
+        };
+        a.rotate(90);
+        a.print();
+
+        Matrix ninetyDegrees = new Matrix(2);
+        ninetyDegrees.data = new int[][]{
+                {3, 1},
+                {4, 2}
+        };
+        ninetyDegrees.print();
+        assertTrue(Matrix.hasSameContent(a,ninetyDegrees));
     }
 }

@@ -16,37 +16,51 @@ class MatrixTest {
         System.out.println("Print A matrix");
         a.print();
 
-        Matrix ninetyDegrees = a.turn(90);
+        Matrix ninetyDegrees = a.rotate(90);
         System.out.println("\nPrint A matrix - turned 90 degrees");
         ninetyDegrees.print();
 
-        Matrix oneHundredEightyDegrees = a.turn(180);
+        Matrix oneHundredEightyDegrees = a.rotate(180);
         System.out.println("\nPrint A matrix - turned 180 degrees");
         oneHundredEightyDegrees.print();
 
-        Matrix twoHundredSeventyDegrees = a.turn(270);
+        Matrix twoHundredSeventyDegrees = a.rotate(270);
         System.out.println("\nPrint A matrix - turned 270 degrees");
         twoHundredSeventyDegrees.print();
         assertAll(
                 () -> assertTrue(Matrix.isSame(
-                        a.turn(90), ninetyDegrees
+                        a.rotate(90), ninetyDegrees
                 )),
                 () -> assertTrue(Matrix.isSame(
-                        ninetyDegrees.turn(180), twoHundredSeventyDegrees
+                        ninetyDegrees.rotate(180), twoHundredSeventyDegrees
                 )),
                 () -> assertTrue(Matrix.isSame(
-                        oneHundredEightyDegrees.turn(90), twoHundredSeventyDegrees
+                        oneHundredEightyDegrees.rotate(90), twoHundredSeventyDegrees
                 )),
                 () -> assertTrue(Matrix.isSame(
-                        twoHundredSeventyDegrees.turn(90), a
+                        twoHundredSeventyDegrees.rotate(90), a
                 )),
                 () -> assertTrue(Matrix.isSame(
-                        oneHundredEightyDegrees.turn(180), a
+                        oneHundredEightyDegrees.rotate(180), a
                 )),
                 () -> assertTrue(Matrix.isSame(
-                        twoHundredSeventyDegrees.turn(180), ninetyDegrees
+                        twoHundredSeventyDegrees.rotate(180), ninetyDegrees
                 ))
         );
+    }
+
+    @Test
+    @DisplayName("Matrix data - deep copy of data")
+    void matrixRotationDataSameObject() {
+        Matrix a = new Matrix(4);
+        a.fillRandomValues(-1_000, 1_000);
+
+        Matrix b = a.rotate(90);
+        assertNotSame(a.data, b.data);
+
+        a = b.rotate(90);
+        assertNotSame(a.data, b.data);
+
     }
     @Test
     @DisplayName("Matrix isSame")

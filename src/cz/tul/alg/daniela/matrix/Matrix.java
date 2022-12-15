@@ -42,14 +42,18 @@ public class Matrix {
      * @param degrees the number of degrees to rotate the matrix by.
      * @return A new matrix with the same data as the original matrix, but rotated by the specified number of degrees.
      */
-    public Matrix turn(int degrees) {
+    public Matrix rotate(int degrees) {
         // Checks if degrees is 0, 90, 180 or 270
         if (degrees%90 != 0 || degrees > 270 || degrees < 0) return null;
 
         Matrix newMatrix = new Matrix(this.size);
-        newMatrix.data = this.data;
 
-        // Rotate by 90 degrees -> 180-degree rotation = 2x 90-degree rotation.
+        // Copy data to the new object
+        for (int y = 0; y < this.size; y++)
+            for (int x = 0; x < this.size; x++)
+                newMatrix.data[x][y] = this.data[x][y];
+
+        // Rotate by 90 degrees -> 180-degree rotation = 2x 90-degree rotation and so on.
         for (int i = 0; i < degrees/90; i++) {
             // Transposition and copy to new matrix
             int tmp;

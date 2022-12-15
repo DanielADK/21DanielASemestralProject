@@ -26,7 +26,7 @@ public class Matrix {
      * @param b The matrix to compare to a.
      * @return The method is returning a boolean value.
      */
-    public static boolean isSame(Matrix a, Matrix b) {
+    public static boolean hasSameContent(Matrix a, Matrix b) {
         if (a.size != b.size) return false;
         for (int i = 0; i < a.size; i++) {
             for (int j = 0; j < a.size; j++) {
@@ -37,43 +37,52 @@ public class Matrix {
     }
 
     /**
+     * Create a new matrix, and copy the values from the old matrix into the new matrix.
+     *
+     * @return A new matrix with the same values as the original matrix.
+     */
+    public Matrix deepCopy() {
+        Matrix newMatrix = new Matrix(this.size);
+
+        for (int y = 0; y < this.size; y++)
+            for (int x = 0; x < this.size; x++)
+                newMatrix.data[x][y] = this.data[x][y];
+
+        return newMatrix;
+    }
+    public void transpose() {
+        int tmp;
+        for (int y = 0; y < this.size; y++) {
+            for (int x = y+1; x < this.size; x++) {
+                tmp = this.data[y][x];
+                this.data[y][x] = this.data[x][y];
+                this.data[x][y] = tmp;
+            }
+        }
+    }
+    /**
      * > Transpose the matrix, then reverse the columns
      *
      * @param degrees the number of degrees to rotate the matrix by.
      * @return A new matrix with the same data as the original matrix, but rotated by the specified number of degrees.
      */
-    public Matrix rotate(int degrees) {
+    public void rotate(int degrees) {
         // Checks if degrees is 0, 90, 180 or 270
-        if (degrees%90 != 0 || degrees > 270 || degrees < 0) return null;
+        if (degrees%90 != 0 || degrees > 270 || degrees < 0) return;
 
-        Matrix newMatrix = new Matrix(this.size);
-
-        // Copy data to the new object
-        for (int y = 0; y < this.size; y++)
-            for (int x = 0; x < this.size; x++)
-                newMatrix.data[x][y] = this.data[x][y];
-
-        // Rotate by 90 degrees -> 180-degree rotation = 2x 90-degree rotation and so on.
+        // Rotate by 90 degrees; 180-degree rotation = 2x 90-degree rotation and so on.
         for (int i = 0; i < degrees/90; i++) {
-            // Transposition and copy to new matrix
-            int tmp;
-            for (int y = 0; y < this.size; y++) {
-                for (int x = 0; x < this.size; x++) {
-                    tmp = newMatrix.data[y][x];
-                    newMatrix.data[y][x] = newMatrix.data[x][y];
-                    newMatrix.data[x][y] = tmp;
-                }
-            }
-
             // Reversing columns
             int[] tmpCol;
             for (int y = 0; y < this.size/2; y++) {
-                tmpCol = newMatrix.data[y];
-                newMatrix.data[y] = newMatrix.data[this.size-y-1];
-                newMatrix.data[this.size-y-1] = tmpCol;
+                tmpCol = this.data[y];
+                this.data[y] = this.data[this.size-y-1];
+                this.data[this.size-y-1] = tmpCol;
             }
+
+            // Transposition and copy to new matrix
+            this.transpose();
         }
-        return newMatrix;
     }
     /**
      * This function prints the matrix

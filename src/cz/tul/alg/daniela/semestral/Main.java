@@ -33,6 +33,7 @@ public class Main {
                 case 1 -> VanoceDanielAdamek.run();
                 case 2 -> MatrixApp.run();
                 case 3 -> { return; }
+                default -> System.out.println("Neznámá volba.");
             }
         }
     }

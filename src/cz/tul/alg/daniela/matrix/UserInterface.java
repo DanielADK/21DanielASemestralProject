@@ -9,6 +9,16 @@ public class UserInterface {
     // It creates a new scanner object, which is used to read from the console.
     public static Scanner sc = new Scanner(System.in);
     /**
+     * If the next input is an integer, read it and return it, otherwise return -1.
+     *
+     * @return The size of the array.
+     */
+    public static int readSize() {
+        if (!sc.hasNext()) return -1;
+        int size = sc.nextInt();
+        return (size > 0) ? size : -1;
+    }
+    /**
      * It reads a matrix from the input stream, and returns it if it's valid, or null if it's not
      *
      * @param size the size of the matrix to be read
@@ -28,25 +38,15 @@ public class UserInterface {
         return (insertCounter == size*size)? newMatrix : null;
     }
     /**
-     * It reads a line from the console, splits it by space, checks if the first word is "Rotace" and if the second word is
-     * a number, and if so, it returns the number
+     * If the degrees are divisible by 90 and the result is between 1 and 3, print "Rotace " and number of degrees. Otherwise, print "Není
+     * rotace"
      *
-     * @return The rotation in degrees.
+     * @param degrees the number of degrees to rotate the image
      */
-    public static int readRotation() {
-        String str = sc.next();
-        // Split by space to get degrees
-        String[] split = str.split(" ");
-        // The second string has to be a number - count of degrees
-        if (!split[0].equals("Rotace")) {
-            System.out.println("Neznámá operace!");
-            return -1;
-        }
-        int rotation = Integer.parseInt(split[1]);
-
-        // If rotation is not 90, 180 or 270 - return -1 as error, otherwise the degrees
-        return (rotation == 90 ||
-                rotation == 180 ||
-                rotation == 270) ? rotation : -1;
+    public static void printResult(int degrees) {
+        if (degrees%90 == 0 && degrees/90 > 0 && degrees/90 < 4)
+            System.out.println("Rotace " + degrees);
+        else
+            System.out.println("Není rotace");
     }
 }

@@ -9,7 +9,7 @@ public class UserInterface {
     /**
      * It creates a new scanner object, which is used to read from the console.
      */
-    public static Scanner sc = new Scanner(System.in);
+    public static final Scanner sc = new Scanner(System.in);
 
     /**
      * If the next input is an integer, read it and return it, otherwise return -1.

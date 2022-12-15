@@ -10,7 +10,7 @@ public class Matrix {
     /**
      * A variable that stores the size of the matrix.
      */
-    public int size;
+    public final int size;
     /**
      * Creating a 2D array of integers - stored data.
      */

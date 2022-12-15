@@ -9,7 +9,7 @@ public class MatrixApp {
             System.out.println("Rozměr matic");
             int size = UserInterface.readSize();
             // If size is -1, then exit the program
-            if (size <= 0) return;
+            if (size == -1) return;
 
             // Load matrix data from user
             System.out.println("První matice");

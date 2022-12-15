@@ -37,16 +37,4 @@ public class UserInterface {
         // It checks if the matrix is valid, and if it is, it returns it, otherwise it returns null.
         return (insertCounter == size*size)? newMatrix : null;
     }
-    /**
-     * If the degrees are divisible by 90 and the result is between 1 and 3, print "Rotace " and number of degrees. Otherwise, print "Není
-     * rotace"
-     *
-     * @param degrees the number of degrees to rotate the image
-     */
-    public static void printResult(int degrees) {
-        if (degrees%90 == 0 && degrees/90 > 0 && degrees/90 < 4)
-            System.out.println("Rotace " + degrees);
-        else
-            System.out.println("Není rotace");
-    }
 }

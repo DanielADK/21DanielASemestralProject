@@ -7,6 +7,11 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class MatrixTest {
 
+    /**
+     * It validates the matrix, turns it 90, 180, and 270 degrees, and print the matrices
+     *
+     * @param a the matrix to be turned
+     */
     void basicTurnCases(Matrix a) {
         System.out.println("Print A matrix");
         a.print();
@@ -37,11 +42,15 @@ class MatrixTest {
                 )),
                 () -> assertTrue(Matrix.isSame(
                         oneHundredEightyDegrees.turn(180), a
+                )),
+                () -> assertTrue(Matrix.isSame(
+                        twoHundredSeventyDegrees.turn(180), ninetyDegrees
                 ))
         );
     }
     @Test
     @DisplayName("Matrix isSame")
+    // Testing if the method `isSame` is working correctly.
     void isSameTest() {
         // Testing cases - even
         Matrix a = new Matrix(4);
@@ -67,6 +76,7 @@ class MatrixTest {
     }
     @Test
     @DisplayName("Matrix turn method - edge cases")
+    // Testing the edge cases of the turn method.
     void turnEdgeCases() {
         // Testing cases
         Matrix a = new Matrix(0);
@@ -79,6 +89,7 @@ class MatrixTest {
     }
     @Test
     @DisplayName("Matrix turn method - Odd sizes")
+    // A method that is testing the turn method for odd sizes.
     void turnOddSizes() {
         // Testing cases
         Matrix a = new Matrix(3);
@@ -91,6 +102,7 @@ class MatrixTest {
     }
     @Test
     @DisplayName("Matrix turn method - Even sizes")
+    // A method that is testing the turn method for even sizes.
     void turnEvenSizes() {
         // Testing cases
         Matrix a = new Matrix(2);

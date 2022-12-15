@@ -1,5 +1,8 @@
 package cz.tul.alg.daniela.matrix;
 
+/**
+ * The type Matrix app.
+ */
 public class MatrixApp {
     /**
      * Runs matrix-rotation-identifier application while input size is not 0 or less than zero

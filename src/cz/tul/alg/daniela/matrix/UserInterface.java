@@ -6,8 +6,11 @@ import java.util.Scanner;
  * It reads a matrix from the console, and it reads a rotation from the console
  */
 public class UserInterface {
-    // It creates a new scanner object, which is used to read from the console.
+    /**
+     * It creates a new scanner object, which is used to read from the console.
+     */
     public static Scanner sc = new Scanner(System.in);
+
     /**
      * If the next input is an integer, read it and return it, otherwise return -1.
      *
@@ -18,6 +21,7 @@ public class UserInterface {
         int size = sc.nextInt();
         return (size > 0) ? size : -1;
     }
+
     /**
      * It reads a matrix from the input stream, and returns it if it's valid, or null if it's not
      *

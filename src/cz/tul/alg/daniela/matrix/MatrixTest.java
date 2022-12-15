@@ -5,6 +5,9 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * The type Matrix test.
+ */
 class MatrixTest {
 
     /**
@@ -51,9 +54,11 @@ class MatrixTest {
         assertTrue(Matrix.hasSameContent(a,threeHunderedSixty));
     }
 
+    /**
+     * Deep copy test
+     */
     @Test
     @DisplayName("Matrix data - deep copy of data")
-    // Deep copy test
     void matrixRotationDataSameObject() {
         Matrix a = new Matrix(4);
         a.fillRandomValues(-1_000, 1_000);
@@ -65,10 +70,13 @@ class MatrixTest {
         assertNotSame(a.data, b.data);
 
     }
+
+    /**
+     * Testing if the method `hasSameContent` is working correctly.
+     */
     @Test
-    @DisplayName("Matrix isSame")
-    // Testing if the method `isSame` is working correctly.
-    void isSameTest() {
+    @DisplayName("Matrix hasSameContent")
+    void hasSameContentTest() {
         // Testing cases - even
         Matrix a = new Matrix(4);
         Matrix b = new Matrix(4);
@@ -91,9 +99,12 @@ class MatrixTest {
         // Assertion
         assertTrue(Matrix.hasSameContent(a,b));
     }
+
+    /**
+     * Testing the edge cases of the turn method.
+     */
     @Test
     @DisplayName("Matrix turn method - edge cases")
-    // Testing the edge cases of the turn method.
     void turnEdgeCases() {
         // Testing cases
         Matrix a = new Matrix(0);
@@ -104,9 +115,12 @@ class MatrixTest {
         b.fillRandomValues(-1_000, 1_000);
         basicTurnCases(b);
     }
+
+    /**
+     * A method that is testing the turn method for odd sizes.
+     */
     @Test
     @DisplayName("Matrix turn method - Odd sizes")
-    // A method that is testing the turn method for odd sizes.
     void turnOddSizes() {
         // Testing cases
         Matrix a = new Matrix(3);
@@ -117,9 +131,12 @@ class MatrixTest {
         b.fillRandomValues(-1_000, 1_000);
         basicTurnCases(b);
     }
+
+    /**
+     * A method that is testing the turn method for even sizes.
+     */
     @Test
     @DisplayName("Matrix turn method - Even sizes")
-    // A method that is testing the turn method for even sizes.
     void turnEvenSizes() {
         // Testing cases
         Matrix a = new Matrix(2);
@@ -130,6 +147,10 @@ class MatrixTest {
         b.fillRandomValues(-1_000, 1_000);
         basicTurnCases(b);
     }
+
+    /**
+     * Manual rotation.
+     */
     @Test
     @DisplayName("Matrix turn method - manual rotation")
     void manualRotation() {

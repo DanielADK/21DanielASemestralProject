@@ -7,13 +7,18 @@ package cz.tul.alg.daniela.matrix;
  * A matrix is a 2D array of integers
  */
 public class Matrix {
-    // A variable that stores the size of the matrix.
+    /**
+     * A variable that stores the size of the matrix.
+     */
     public int size;
-    // Creating a 2D array of integers - stored data.
+    /**
+     * Creating a 2D array of integers - stored data.
+     */
     public int[][] data;
 
     /**
      * Constructor of square matrix
+     *
      * @param size - size of matrix
      */
     Matrix(int size) {
@@ -53,6 +58,7 @@ public class Matrix {
 
         return newMatrix;
     }
+
     /**
      * Casual matrix transposition <=>
      * For each row, swap the values of each column with the value of the corresponding column in the row below it.
@@ -67,6 +73,7 @@ public class Matrix {
             }
         }
     }
+
     /**
      * Rotates matrix by 0, 90, 180 or 270 degrees
      *
@@ -90,6 +97,7 @@ public class Matrix {
             this.transpose();
         }
     }
+
     /**
      * This function prints the matrix
      */
@@ -100,6 +108,7 @@ public class Matrix {
             }
             System.out.println();
         }}
+
     /**
      * This function fills the matrix with random values between min and max.
      *

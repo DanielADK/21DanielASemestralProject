@@ -6,10 +6,16 @@ import cz.tul.alg.daniela.matrix.UserInterface;
 
 /**
  * 21. Program checks if first matrix is turn variation of the second one.
+ *
  * @author daniel.adamek
  * @version 1.0 14-12-2022
  */
 public class Main {
+    /**
+     * The entry point of application.
+     *
+     * @param args the input arguments
+     */
     public static void main(String[] args) {
         while (true) {
             System.out.println(

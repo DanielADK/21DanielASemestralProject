@@ -1,12 +1,15 @@
 package cz.tul.alg.daniela.matrix;
 
 public class MatrixApp {
+    /**
+     * Runs matrix-rotation-identifier application while input size is not 0 or less than zero
+     */
     public static void run() {
         while (true) {
             System.out.println("Rozměr matic");
             int size = UserInterface.readSize();
             // If size is -1, then exit the program
-            if (size == -1) return;
+            if (size <= 0) return;
 
             // Load matrix data from user
             System.out.println("První matice");

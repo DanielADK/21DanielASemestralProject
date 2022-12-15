@@ -1,3 +1,6 @@
+/**
+ * A matrix is a 2D array of integers
+ */
 package cz.tul.alg.daniela.matrix;
 
 /**
@@ -23,7 +26,7 @@ public class Matrix {
      * elements are not the same, return false. Otherwise, return true.
      *
      * @param a The first matrix to compare.
-     * @param b The matrix to compare to a.
+     * @param b The matrix to compare to the first matrix.
      * @return The method is returning a boolean value.
      */
     public static boolean hasSameContent(Matrix a, Matrix b) {
@@ -50,6 +53,10 @@ public class Matrix {
 
         return newMatrix;
     }
+    /**
+     * Casual matrix transposition <=>
+     * For each row, swap the values of each column with the value of the corresponding column in the row below it.
+     */
     public void transpose() {
         int tmp;
         for (int y = 0; y < this.size; y++) {
@@ -61,10 +68,9 @@ public class Matrix {
         }
     }
     /**
-     * > Transpose the matrix, then reverse the columns
+     * Rotates matrix by 0, 90, 180 or 270 degrees
      *
-     * @param degrees the number of degrees to rotate the matrix by.
-     * @return A new matrix with the same data as the original matrix, but rotated by the specified number of degrees.
+     * @param degrees - rotation degrees (valid = {0, 90, 180, 270})
      */
     public void rotate(int degrees) {
         // Checks if degrees is 0, 90, 180 or 270
@@ -98,7 +104,7 @@ public class Matrix {
      * This function fills the matrix with random values between min and max.
      *
      * @param min the minimum value of the random numbers
-     * @param max The maximum value that can be generated.
+     * @param max the maximum value that can be generated.
      */
     public void fillRandomValues(int min, int max) {
         for (int i = 0; i < this.size; i++)

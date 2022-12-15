@@ -53,6 +53,7 @@ class MatrixTest {
 
     @Test
     @DisplayName("Matrix data - deep copy of data")
+    // Deep copy test
     void matrixRotationDataSameObject() {
         Matrix a = new Matrix(4);
         a.fillRandomValues(-1_000, 1_000);

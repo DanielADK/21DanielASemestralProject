@@ -3,8 +3,7 @@ package cz.tul.alg.daniela.matrix;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertNotSame;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * The type Matrix test.
@@ -65,10 +64,25 @@ class MatrixTest {
         a.fillRandomValues(-1_000, 1_000);
 
         Matrix b = a.deepCopy();
+        assertNotSame(a, b);
         assertNotSame(a.data, b.data);
+        // Manual content verification
+        for (int i = 0; i < a.size; i++)
+            for (int j = 0; j < a.size; j++)
+                assertEquals(a.data[i][j], b.data[i][j]);
+        // usage of hasSameContent method
+        assertTrue(Matrix.hasSameContent(a,b));
+
 
         a = b.deepCopy();
+        assertNotSame(a, b);
         assertNotSame(a.data, b.data);
+        // Manual content verification
+        for (int i = 0; i < a.size; i++)
+            for (int j = 0; j < a.size; j++)
+                assertEquals(a.data[i][j], b.data[i][j]);
+        // usage of hasSameContent method
+        assertTrue(Matrix.hasSameContent(a,b));
 
     }
 
@@ -82,22 +96,26 @@ class MatrixTest {
         Matrix a = new Matrix(4);
         Matrix b = new Matrix(4);
         a.fillRandomValues(-1_000, 1_000);
+        b.data[1][1] = 1;
+        a.data[1][1] = 2;
 
-        // Copy primitive values
-        b.data = a.data;
+        assertFalse(Matrix.hasSameContent(a,b));
+
+        // Copy data
+        for (int i = 0; i < a.size; i++)
+            for (int j = 0; j < a.size; j++)
+                b.data[i][j] = a.data[i][j];
 
         // Assertion
         assertTrue(Matrix.hasSameContent(a,b));
 
-        // Testing cases - odd
-        Matrix c = new Matrix(5);
-        Matrix d = new Matrix(5);
-        c.fillRandomValues(-1_000, 1_000);
+        b.fillRandomValues(0,1);
+        assertFalse(Matrix.hasSameContent(a,b));
 
-        // Copy primitive values
-        d.data = c.data;
-
-        // Assertion
+        // Copy data
+        for (int i = 0; i < a.size; i++)
+            for (int j = 0; j < a.size; j++)
+                a.data[i][j] = b.data[i][j];
         assertTrue(Matrix.hasSameContent(a,b));
     }
 

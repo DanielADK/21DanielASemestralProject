@@ -31,12 +31,12 @@ public class MatrixApp {
             boolean foundRotation = false;
             int rotation = 0;
             while (rotation < 360) {
-                m2Rotated.rotate(rotation);
                 if (Matrix.hasSameContent(m1,m2Rotated)) {
                     System.out.println("Rotace " + rotation);
                     foundRotation = true;
                 }
 
+                m2Rotated.rotate(90);
                 rotation += 90;
             }
             if (!foundRotation)
@@ -45,5 +45,12 @@ public class MatrixApp {
             System.out.println();
         }
 
+    }
+
+    /**
+     * Standalone run without menu
+     */
+    public static void main(String[] args) {
+        run();
     }
 }

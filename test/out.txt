@@ -1,0 +1,16 @@
+Rozměr matic
+První matice
+Druhá matice
+Rotace 270
+
+Rozměr matic
+První matice
+Druhá matice
+Rotace 90
+
+Rozměr matic
+První matice
+Druhá matice
+Není rotací
+
+Rozměr matic

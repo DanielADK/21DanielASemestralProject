@@ -36,11 +36,9 @@ public class Matrix {
      */
     public static boolean hasSameContent(Matrix a, Matrix b) {
         if (a.size != b.size) return false;
-        for (int i = 0; i < a.size; i++) {
-            for (int j = 0; j < a.size; j++) {
+        for (int i = 0; i < a.size; i++)
+            for (int j = 0; j < a.size; j++)
                 if (a.data[i][j] != b.data[i][j]) return false;
-            }
-        }
         return true;
     }
 

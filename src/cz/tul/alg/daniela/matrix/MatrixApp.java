@@ -29,14 +29,15 @@ public class MatrixApp {
             Matrix m2Rotated = m2.deepCopy();
 
             boolean foundRotation = false;
-            for (int i = 0; i < 4; i++) {
-                if (i != 0)
-                    m2Rotated.rotate(90);
-
+            int rotation = 0;
+            while (rotation < 360) {
+                m2Rotated.rotate(rotation);
                 if (Matrix.hasSameContent(m1,m2Rotated)) {
-                    System.out.println("Rotace " + i*90);
+                    System.out.println("Rotace " + rotation);
                     foundRotation = true;
                 }
+
+                rotation += 90;
             }
             if (!foundRotation)
                 System.out.println("Není rotací");

@@ -71,6 +71,17 @@ public class Matrix {
             }
         }
     }
+    /**
+     * Reverse rows in matrix
+     */
+    public void reverseRows() {
+        int[] tmpCol;
+        for (int i = 0; i < this.size/2; i++) {
+            tmpCol = this.data[i];
+            this.data[i] = this.data[this.size-i-1];
+            this.data[this.size-i-1] = tmpCol;
+        }
+    }
 
     /**
      * Rotates matrix by 0, 90, 180 or 270 degrees
@@ -82,14 +93,10 @@ public class Matrix {
         if (degrees%90 != 0 || degrees > 270 || degrees < 0) return;
 
         // Rotate by 90 degrees; 180-degree rotation = 2x 90-degree rotation and so on.
-        for (int i = 0; i < degrees/90; i++) {
+        int numberOfRotations = degrees/90;
+        for (int i = 0; i < numberOfRotations; i++) {
             // Reversing columns
-            int[] tmpCol;
-            for (int y = 0; y < this.size/2; y++) {
-                tmpCol = this.data[y];
-                this.data[y] = this.data[this.size-y-1];
-                this.data[this.size-y-1] = tmpCol;
-            }
+            this.reverseRows();
 
             // Transposition and copy to new matrix
             this.transpose();

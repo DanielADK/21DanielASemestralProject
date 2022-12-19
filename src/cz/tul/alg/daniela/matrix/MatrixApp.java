@@ -26,21 +26,28 @@ public class MatrixApp {
                 continue;
             }
 
-            Matrix m2Rotated = m2.deepCopy();
+            int[] rotationsMem = new int[4];
 
-            boolean foundRotation = false;
+            // rotation of matrix
+            Matrix m2Rotated = m2.deepCopy();
             int rotation = 0;
-            while (rotation < 360) {
-                if (Matrix.hasSameContent(m1,m2Rotated)) {
-                    System.out.println("Rotace " + rotation);
-                    foundRotation = true;
-                }
+            while (rotation < 4) {
+                if (Matrix.hasSameContent(m1,m2Rotated))
+                    rotationsMem[rotation] = rotation*90;
 
                 m2Rotated.rotate(90);
-                rotation += 90;
+                rotation++;
             }
-            if (!foundRotation)
-                System.out.println("Není rotací");
+
+            boolean rotated = false;
+            for (int r:rotationsMem) {
+                if (r != 0)  {
+                    System.out.println("Rotace " + r);
+                    rotated = true;
+                }
+            }
+            if (!rotated) System.out.println("Není rotací");
+
             // Run separator
             System.out.println();
         }

@@ -50,6 +50,7 @@
 \newcommand{\glight}[1]{%
     \ooalign{\hss\makebox[0pt]{\fcolorbox{green!80}{green!40}{$#1$}}\hss\cr\phantom{$#1$}}%
 }
+\setlength{\columnseprule}{0pt}
 
 \begin{document}
 
@@ -73,7 +74,7 @@
 \end{frame}
 \begin{frame}
     \frametitle{Rotace matice o 90 stupňů \small{po směru hodinových ručiček}}
-    \includegraphics[scale=0.11]{alg1-rotate-flowchart}
+    \includegraphics[scale=0.12]{alg1-rotate-flowchart}
 \end{frame}
 \begin{frame}
     \frametitle{Rotace matice o 90 stupňů \small{postup}}
@@ -117,12 +118,18 @@
 \end{frame}
 \begin{frame}
 \frametitle{Nejzajímavější část kódu (rotace)}
-\includegraphics[scale=0.25]{java-code}
+\includegraphics[scale=0.6]{java-code}
 
 \end{frame}
 \begin{frame}
     \frametitle{JUnit testování}
-    \includegraphics[scale=0.6]{alg1-unit-tests}
+    \begin{multicols}{3}
+        \includegraphics[scale=0.4]{alg1-unit-code}
+        \columnbreak
+
+        \columnbreak
+        \includegraphics[scale=0.3]{alg1-unit-tests}
+    \end{multicols}
 \end{frame}
 \begin{frame}
     \frametitle{Testování programu}

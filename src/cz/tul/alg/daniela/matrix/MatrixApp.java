@@ -31,12 +31,12 @@ public class MatrixApp {
             // rotation of matrix
             Matrix m2Rotated = m2.deepCopy();
             int rotation = 0;
-            while (rotation < 4) {
+            while (rotation < 360) {
                 if (Matrix.hasSameContent(m1,m2Rotated))
-                    rotationsMem[rotation] = rotation*90;
+                    rotationsMem[rotation/90] = rotation;
 
                 m2Rotated.rotate(90);
-                rotation++;
+                rotation += 90;
             }
 
             boolean rotated = false;

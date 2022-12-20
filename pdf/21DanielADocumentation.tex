@@ -75,13 +75,22 @@
 \section{Návrh řešení}
      Řešení spočívá v:
      \begin{itemize}
-          \item načtení velikosti matice a tím inicializace třídy Matrix reprezentující matici.
-          \item Poté načtení obsahu obou objektů.
-          \item Následně probíhá otáčení matic od 0 stupňů po 270 s krokem 90 stupňů.
-          \item Je-li matice jedním z možných otočení, program vypíše "Rotace " a počet stupňů.
-          \item V případě, že druhá matice není žádnou možnou rotací matice první, program vypíše "Není rotace".
-          \item Program končí, pokud je zadaná velikost matice menší, nebo rovna nule.
+          \item načtení velikosti matic a tím inicializace třídy Matrix reprezentující matici;
+          \item načtení obsahu obou matic;
+          \item otáčení matic od 0 stupňů po 270 s krokem 90 stupňů;
+          \item je-li matice jedním z možných otočení, program vypíše "Rotace " a počet stupňů;
+          \item v případě, že druhá matice není žádnou možnou rotací matice první, program vypíše "Není rotace";
+          \item program končí, pokud je zadaná velikost matice menší, nebo rovna nule.
      \end{itemize}
+     \includegraphics[scale=0.36]{alg1-flowchart}
+
+     Samotné otočení matice spočívá v:
+     \begin{itemize}
+          \item převrácení řádků v matici;
+          \item tranpozice matice.
+     \end{itemize}
+
+     \includegraphics[scale=0.18]{alg1-rotate-flowchart}
 
 \section{Protokol o testování}
      K testování jsem použil nástroj JUnit5, její metody \textit{assertTrue, assertNotSame} a třídu MatrixTest.
